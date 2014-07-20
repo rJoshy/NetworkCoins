@@ -1,6 +1,6 @@
 name: NetworkCoins
 main: me.josh.networkcoins.NetworkCoins
-version: 0.1
+version: 0.2
 author: MinecraftJoshjr
 commands:
   coins:

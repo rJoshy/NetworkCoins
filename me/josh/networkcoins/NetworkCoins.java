@@ -52,7 +52,7 @@ public class NetworkCoins extends JavaPlugin {
 			Bukkit.getServer().getPluginManager().disablePlugin(this);
 		}
 		
-		System.out.println("[NetworkCoins] Successfully Enabled NetworkCoins v0.1 by MinecraftJoshjr. Please report all bugs so I can fix them. Thanks for using my plugin :)");
+		System.out.println("[NetworkCoins] Successfully Enabled NetworkCoins v0.2 by MinecraftJoshjr. Please report all bugs so I can fix them. Thanks for using my plugin :)");
 	}
 	
 	public void onDisable() {
