@@ -1,3 +1,4 @@
+
 package me.josh.networkcoins.commands;
 
 import me.josh.networkcoins.API;
@@ -10,6 +11,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Score;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
 
 public class CoinsCommand implements CommandExecutor {
 	
@@ -48,6 +54,29 @@ public class CoinsCommand implements CommandExecutor {
 		    			API.resetCoins(target);
 		    			p.sendMessage(config.getString("resetCoinsGiver").replace("%prefix", config.getString("Prefix")).replace("%target", target.getName()).replace("%currency", config.getString("currency")).replace("&", "¤"));
 		    			target.sendMessage(config.getString("resetCoinsReceiver").replace("%prefix", config.getString("Prefix")).replace("%currency", config.getString("currency")).replace("&", "¤"));
+		    			
+		    			if (config.getBoolean("scoreboardEnabled")) {
+		    				if (target.getScoreboard() != null) {
+		    					ScoreboardManager manager = Bukkit.getScoreboardManager();
+		    					
+		    					p.setScoreboard(manager.getNewScoreboard());
+		    					
+		    					Scoreboard board = manager.getNewScoreboard();
+		    					Objective o = board.registerNewObjective("test", "dummy");
+		    					o.setDisplaySlot(DisplaySlot.SIDEBAR);
+		    					o.setDisplayName(config.getString("scoreboardPrefix").replace("%currency", config.getString("currency")).replace("&", "¤"));
+		    					
+		    					@SuppressWarnings("deprecation")
+		    					Score s1 = o.getScore(Bukkit.getOfflinePlayer(ChatColor.GOLD + "" + ChatColor.BOLD + "Balance"));
+		    					s1.setScore(2);
+		    					
+		    					@SuppressWarnings("deprecation")
+		    					Score s2 = o.getScore(Bukkit.getOfflinePlayer(ChatColor.AQUA + "  " + API.getCoinsString(p)));
+		    					s2.setScore(1);
+		    					
+		    					p.setScoreboard(board);
+			    			}
+		    			}
 		    		}
 		    	}
 		    }
@@ -77,6 +106,29 @@ public class CoinsCommand implements CommandExecutor {
 			    		API.addCoins(target, coins);
 			    		p.sendMessage(config.getString("addCoinsGiver").replace("%prefix", config.getString("Prefix")).replace("%coins", coins_string).replace("%currency", config.getString("currency")).replace("%target", target.getName()).replace("&", "¤"));
 			    		target.sendMessage(config.getString("addCoinsReceiver").replace("%prefix", config.getString("Prefix")).replace("%coins", coins_string).replace("%currency", config.getString("currency")).replace("&", "¤"));
+			    		
+			    		if (config.getBoolean("scoreboardEnabled")) {
+		    				if (target.getScoreboard() != null) {
+                                ScoreboardManager manager = Bukkit.getScoreboardManager();
+		    					
+		    					p.setScoreboard(manager.getNewScoreboard());
+		    					
+		    					Scoreboard board = manager.getNewScoreboard();
+		    					Objective o = board.registerNewObjective("test", "dummy");
+		    					o.setDisplaySlot(DisplaySlot.SIDEBAR);
+		    					o.setDisplayName(config.getString("scoreboardPrefix").replace("%currency", config.getString("currency")).replace("&", "¤"));
+		    					
+		    					@SuppressWarnings("deprecation")
+		    					Score s1 = o.getScore(Bukkit.getOfflinePlayer(ChatColor.GOLD + "" + ChatColor.BOLD + "Balance"));
+		    					s1.setScore(2);
+		    					
+		    					@SuppressWarnings("deprecation")
+		    					Score s2 = o.getScore(Bukkit.getOfflinePlayer(ChatColor.AQUA + "  " + API.getCoinsString(p)));
+		    					s2.setScore(1);
+		    					
+		    					p.setScoreboard(board);
+			    			}
+		    			}
 			    	}
 		    	}
 		    }
@@ -94,6 +146,29 @@ public class CoinsCommand implements CommandExecutor {
 			    		API.takeCoins(p, target, coins);
 			    		p.sendMessage(config.getString("removeCoinsGiver").replace("%prefix", config.getString("Prefix")).replace("%coins", coins_string).replace("%currency", config.getString("currency")).replace("%target", target.getName()).replace("&", "¤"));
 			    		target.sendMessage(config.getString("removeCoinsReceiver").replace("%prefix", config.getString("Prefix")).replace("%coins", coins_string).replace("%currency", config.getString("currency")).replace("&", "¤"));
+			    		
+			    		if (config.getBoolean("scoreboardEnabled")) {
+		    				if (target.getScoreboard() != null) {
+                                ScoreboardManager manager = Bukkit.getScoreboardManager();
+		    					
+		    					p.setScoreboard(manager.getNewScoreboard());
+		    					
+		    					Scoreboard board = manager.getNewScoreboard();
+		    					Objective o = board.registerNewObjective("test", "dummy");
+		    					o.setDisplaySlot(DisplaySlot.SIDEBAR);
+		    					o.setDisplayName(config.getString("scoreboardPrefix").replace("%currency", config.getString("currency")).replace("&", "¤"));
+		    					
+		    					@SuppressWarnings("deprecation")
+		    					Score s1 = o.getScore(Bukkit.getOfflinePlayer(ChatColor.GOLD + "" + ChatColor.BOLD + "Balance"));
+		    					s1.setScore(2);
+		    					
+		    					@SuppressWarnings("deprecation")
+		    					Score s2 = o.getScore(Bukkit.getOfflinePlayer(ChatColor.AQUA + "  " + API.getCoinsString(p)));
+		    					s2.setScore(1);
+		    					
+		    					p.setScoreboard(board);
+			    			}
+		    			}
 			    	}
 		    	}
 		    }

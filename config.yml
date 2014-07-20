@@ -22,6 +22,12 @@ bypassLimit: false
 # Your custom currency name eg. credits, coins, XP etc #
 currency: Coins
 
+# When players join the game, do you want a scoreboard to show there balance #
+scoreboardEnabled: false
+
+# This is the heading the scoreboard will use #
+scoreboardPrefix: '&c%currency'
+
 # The incorrect usage message for admins #
 incorrectUsage: '%prefix &cIncorrect Usage: /coins help'
 
