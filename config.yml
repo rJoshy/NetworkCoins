@@ -1,0 +1,47 @@
+#
+# Configuration for NetworkCoins
+#
+
+# The MySQL information the plugin will use #
+MySQL:
+  Host: localhost
+  Port: 3306
+  DbName: network_coins
+  Username: root
+  Password:
+
+# The prefix the plugin will use #
+Prefix: '&7[&cNetworkCoins&7]'
+
+# The message when players don’t have permission to use certain things #
+noPermission: '%prefix &cYou do not have permission to execute this command!'
+
+# This option allows players to have a balance below 0 eg. -10 #
+bypassLimit: false
+
+# Your custom currency name eg. credits, coins, XP etc #
+currency: Coins
+
+# The incorrect usage message for admins #
+incorrectUsage: '%prefix &cIncorrect Usage: /coins help'
+
+# The message players receive when checking there coins count #
+getCoinsMessage: '%prefix &7You currently have &a%count &7%currency '
+
+# The message players receive when checking someone else’s coins count #
+getSomeonesCoinsMessage: '%prefix &a%target &7currently has &a%count &7%currency '
+
+# The messages that are sent when coins are given to a player #
+addCoinsReceiver: '%prefix &a%coins &7%currency have been added to your account'
+addCoinsGiver: '%prefix &7You have given &a%coins &7%currency to &a%target'
+
+# The messages that are sent when coins are removed from a player  #
+removeCoinsReceiver: '%prefix &a%coins &7%currency have been taken from your account'
+removeCoinsGiver: '%prefix &7You have taken &a%coins &7%currency from &a%target'
+
+# The messages that are sent when coins are removed from a player  #
+resetCoinsReceiver: '%prefix &7Your %currency balance has been reset!'
+resetCoinsGiver: '%prefix &7You have reset &a%target’s &7%currency balance'
+
+# Normal players don’t need to see help, this is the message they see #
+cannotUseHelp: '%prefix &cIncorrect Usage: /coins'

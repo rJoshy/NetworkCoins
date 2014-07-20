@@ -1,0 +1,7 @@
+name: NetworkCoins
+main: me.josh.networkcoins.NetworkCoins
+version: 0.1
+author: MinecraftJoshjr
+commands:
+  coins:
+    description: NetworkCoins Root Command
