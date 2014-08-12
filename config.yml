@@ -22,6 +22,9 @@ bypassLimit: false
 # Your custom currency name eg. credits, coins, XP etc #
 currency: Coins
 
+# How long (in minutes) should we check if the connection is open #
+connectionCheckInterval: 1
+
 # When players join the game, do you want a scoreboard to show there balance #
 scoreboardEnabled: false
 
@@ -47,7 +50,13 @@ removeCoinsGiver: '%prefix &7You have taken &a%coins &7%currency from &a%target'
 
 # The messages that are sent when coins are removed from a player  #
 resetCoinsReceiver: '%prefix &7Your %currency balance has been reset!'
-resetCoinsGiver: '%prefix &7You have reset &a%target’s &7%currency balance'
+resetCoinsGiver: '%prefix &7You have reset &a%target &7%currency balance'
 
-# Normal players don’t need to see help, this is the message they see #
+# The message sent to the player when they set all balance's to a certain coin count #
+setAllMessage: '%prefix &7You have successfully set everyones &a%currency &7balance to &a%coins'
+
+# The message sent to the player when they give everyone a certain amount of coins #
+giveAllMessage: '%prefix &7You have successfully given everyone &a%coins &7%currency'
+
+# Normal players don't need to see help, this is the message they see #
 cannotUseHelp: '%prefix &cIncorrect Usage: /coins'

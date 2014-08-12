@@ -13,6 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class NetworkCoins extends JavaPlugin {
 	
+	public int checkInterval = (getConfig().getInt("connectionCheckInterval") * 1200);
 	private static Connection c;
 	
 	public static Connection getConnection() {
@@ -52,7 +53,29 @@ public class NetworkCoins extends JavaPlugin {
 			Bukkit.getServer().getPluginManager().disablePlugin(this);
 		}
 		
-		System.out.println("[NetworkCoins] Successfully Enabled NetworkCoins v0.2 by MinecraftJoshjr. Please report all bugs so I can fix them. Thanks for using my plugin :)");
+		System.out.println("[NetworkCoins] Successfully Enabled NetworkCoins v0.3 by MinecraftJoshjr. Please report all bugs so I can fix them. Thanks for using my plugin :)");
+		
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+			public void run() {
+				if (c == null) {
+					try {
+						System.out.println("[NetworkCoins] Connection is closed, attempting to reconnect to the database!");
+						
+						String host = getConfig().getString("MySQL.Host");
+						int port = getConfig().getInt("MySQL.Port");
+						String dbname = getConfig().getString("MySQL.DbName");
+						String user = getConfig().getString("MySQL.Username");
+						String pass = getConfig().getString("MySQL.Password");
+						
+						openConnection(host, user, pass, dbname, port);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				} else {
+					System.out.println("[NetworkCoins] Connection is still open and active! Yay :D");
+				}
+			}
+		}, 0L, checkInterval);
 	}
 	
 	public void onDisable() {
