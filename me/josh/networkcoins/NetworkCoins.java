@@ -53,7 +53,7 @@ public class NetworkCoins extends JavaPlugin {
 			Bukkit.getServer().getPluginManager().disablePlugin(this);
 		}
 		
-		System.out.println("[NetworkCoins] Successfully Enabled NetworkCoins v0.3 by MinecraftJoshjr. Please report all bugs so I can fix them. Thanks for using my plugin :)");
+		System.out.println("[NetworkCoins] Successfully Enabled NetworkCoins v0.4 by MinecraftJoshjr. Please report all bugs so I can fix them. Thanks for using my plugin :)");
 		
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
 			public void run() {
@@ -91,7 +91,7 @@ public class NetworkCoins extends JavaPlugin {
 		c = DriverManager.getConnection("jdbc:mysql://" + hostname + ":" + port + "/" + database, username, password);
 		
 		String update_string = "CREATE TABLE IF NOT EXISTS NetworkCoins"
-	            + "  (player_uuid           VARCHAR(50),"
+	            + "   (player_uuid           VARCHAR(50),"
 	            + "   balance               INTEGER)";
 
 	    Statement update = c.createStatement();

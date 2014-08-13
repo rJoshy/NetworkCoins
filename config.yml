@@ -19,6 +19,9 @@ noPermission: '%prefix &cYou do not have permission to execute this command!'
 # This option allows players to have a balance below 0 eg. -10 #
 bypassLimit: false
 
+# The message sent when a person attempts to put a player balance in -’s #
+cannotBypassLimit: '%prefix &cError: &a%target &conly has &a%coins %currency'
+
 # Your custom currency name eg. credits, coins, XP etc #
 currency: Coins
 
@@ -50,23 +53,10 @@ removeCoinsGiver: '%prefix &7You have taken &a%coins &7%currency from &a%target'
 
 # The messages that are sent when coins are removed from a player  #
 resetCoinsReceiver: '%prefix &7Your %currency balance has been reset!'
-resetCoinsGiver: '%prefix &7You have reset &a%target &7%currency balance'
-<<<<<<< HEAD
+resetCoinsGiver: '%prefix &7You have reset &a%target’s &7%currency balance'
 
-# The message sent to the player when they set all balance's to a certain coin count #
-setAllMessage: '%prefix &7You have successfully set everyones &a%currency &7balance to &a%coins'
-
-# The message sent to the player when they give everyone a certain amount of coins #
-giveAllMessage: '%prefix &7You have successfully given everyone &a%coins &7%currency'
-
-=======
-
-# The message sent to the player when they set all balance's to a certain coin count #
-setAllMessage: '%prefix &7You have successfully set everyones &a%currency &7balance to &a%coins'
-
-# The message sent to the player when they give everyone a certain amount of coins #
-giveAllMessage: '%prefix &7You have successfully given everyone &a%coins &7%currency'
-
->>>>>>> FETCH_HEAD
-# Normal players don't need to see help, this is the message they see #
+# Normal players don’t need to see help, this is the message they see #
 cannotUseHelp: '%prefix &cIncorrect Usage: /coins'
+
+# The error returned when the plugin cannot find a player in the database #
+cannotFindPlayer: '%prefix &cCannot find player: &a%target'
