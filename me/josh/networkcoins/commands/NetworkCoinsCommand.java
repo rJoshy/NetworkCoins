@@ -2,13 +2,13 @@
 package me.josh.networkcoins.commands;
 
 import me.josh.networkcoins.API;
+import me.josh.networkcoins.AbstractCommand;
 import me.josh.networkcoins.NetworkCoins;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -18,17 +18,19 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 
-public class CoinsCommand implements CommandExecutor {
+public class NetworkCoinsCommand extends AbstractCommand {
 	
 	static FileConfiguration config = NetworkCoins.getInstance().getConfig();
 	
+	public NetworkCoinsCommand(String cmd, String usage, String description) {
+        super(cmd, usage, description);
+    }
+	
 	public boolean onCommand(CommandSender sender, Command cmd, String CommandLabel, String[] args) {
 		Player p = (Player)sender;
-		    if (cmd.getName().equalsIgnoreCase("coins")) {
-		    	if (args.length < 1) {
-		    		p.sendMessage(config.getString("getCoinsMessage").replace("%prefix", config.getString("Prefix")).replace("%count", API.getCoinsString(p)).replace("%currency", config.getString("currency")).replace("&", "¤"));
-		    		return true;
-		    	}
+		    if (args.length < 1) {
+		    	p.sendMessage(config.getString("getCoinsMessage").replace("%prefix", config.getString("Prefix")).replace("%count", API.getCoinsString(p)).replace("%currency", config.getString("currency")).replace("&", "¤"));
+		    	return true;
 		    }
 		    if (args.length == 1) {
 		    	if (args[0].equalsIgnoreCase("help")) {

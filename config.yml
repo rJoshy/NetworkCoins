@@ -10,6 +10,9 @@ MySQL:
   Username: root
   Password:
 
+# This is your custom command, it can be /coins or /tokens, you choose :) #
+customCommand: coins
+
 # The prefix the plugin will use #
 Prefix: '&7[&cNetworkCoins&7]'
 

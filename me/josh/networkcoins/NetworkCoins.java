@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import me.josh.networkcoins.commands.CoinsCommand;
+import me.josh.networkcoins.commands.NetworkCoinsCommand;
 import me.josh.networkcoins.listeners.PlayerJoin;
 
 import org.bukkit.Bukkit;
@@ -30,8 +30,11 @@ public class NetworkCoins extends JavaPlugin {
 		instance = this;
 		
 		saveDefaultConfig();
-		
-        getCommand("coins").setExecutor(new CoinsCommand());
+        
+        AbstractCommand customCommand = new NetworkCoinsCommand(getConfig().getString("customCommand"), "/<command> [args]", "NetworkCoins Root Command");
+        customCommand.register();
+        
+        System.out.println("[NetworkCoins] Successfully registered /" + customCommand.getCommand() + " as your custom command :D");
 		
 		Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
 		
@@ -53,7 +56,7 @@ public class NetworkCoins extends JavaPlugin {
 			Bukkit.getServer().getPluginManager().disablePlugin(this);
 		}
 		
-		System.out.println("[NetworkCoins] Successfully Enabled NetworkCoins v0.4 by MinecraftJoshjr. Please report all bugs so I can fix them. Thanks for using my plugin :)");
+		System.out.println("[NetworkCoins] Successfully Enabled NetworkCoins v0.5 by MinecraftJoshjr. Please report all bugs so I can fix them. Thanks for using my plugin :)");
 		
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
 			public void run() {
